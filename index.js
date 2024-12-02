@@ -97,7 +97,6 @@ function connectGeyser(){
                         if(allAccounts.includes(PUMPFUN_BONDINGCURVE)||allAccounts.includes(RAYDIUM_OPENBOOK_AMM)){
 
                             console.log(`https://solscan.io/tx/${sig}`)
-                            return
                             
                             const SOLBalanceChange=transaction.meta.postBalances[0]-transaction.meta.preBalances[0]
                             // console.log({SOLBalanceChange})
@@ -136,6 +135,7 @@ function connectGeyser(){
                             // return;
                 
                             if(allAccounts.includes(RAYDIUM_OPENBOOK_AMM)){
+                                return;
                                 const swapInstruction=(transaction?.transaction.message.instructions).find(instruction =>allAccounts[instruction.programIdIndex]==RAYDIUM_OPENBOOK_AMM);
                                 console.log(swapInstruction)
                                 if(swapInstruction){
